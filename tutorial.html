@@ -3,34 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bot Guide</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Bot Tutorial - Crazy Academy</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1 id="bot-title">Loading...</h1>
-    <p id="bot-description"></p>
-    <p><strong>Deployment:</strong> <span id="bot-deployment"></span></p>
-    <div id="bot-video"></div>
-    <div id="bot-text-guide"></div>
-    <a href="index.html" class="back-btn">Back</a>
-  </div>
+  <nav>
+    <a href="index.html">← Back to Home</a>
+  </nav>
 
-  <script src="data.js"></script>
+  <main class="fade-in">
+    <section id="bot-info">
+      <h2>Loading tutorial...</h2>
+    </section>
+  </main>
+
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const botKey = params.get("bot");
+    const urlParams = new URLSearchParams(window.location.search);
+    const botName = urlParams.get("bot");
 
-    if (botKey && botsData[botKey]) {
-      const bot = botsData[botKey];
-      document.getElementById("bot-title").textContent = bot.name;
-      document.getElementById("bot-description").textContent = bot.description;
-      document.getElementById("bot-deployment").textContent = bot.deployment;
-      document.getElementById("bot-video").innerHTML = `<iframe width="100%" height="250" src="${bot.video}" frameborder="0" allowfullscreen></iframe>`;
-      document.getElementById("bot-text-guide").innerHTML = `<p>${bot.guide}</p>`;
-    } else {
-      document.querySelector(".container").innerHTML = "<h2>Bot not found.</h2><a href='index.html'>Back</a>";
-    }
+    fetch("bots.json")
+      .then(res => res.json())
+      .then(bots => {
+        const bot = bots.find(b => b.name === botName);
+        const container = document.getElementById("bot-info");
+
+        if (!bot) {
+          container.innerHTML = "<p>Bot not found.</p>";
+          return;
+        }
+
+        container.innerHTML = `
+          <h2>${bot.name}</h2>
+          <p>${bot.desc}</p>
+          <p><strong>Difficulty:</strong> ${bot.level}</p>
+          <p><strong>Deployment:</strong> ${bot.deployment}</p>
+          <p><strong>Repository:</strong> <a href="${bot.repo}" target="_blank">${bot.repo}</a></p>
+          <p><strong>Tutorial:</strong> <a href="${bot.tutorial}" target="_blank">Watch Video</a></p>
+        `;
+      })
+      .catch(() => {
+        document.getElementById("bot-info").innerHTML = "<p>Unable to load bot data.</p>";
+      });
   </script>
 </body>
 </html>
