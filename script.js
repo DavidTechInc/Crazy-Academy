@@ -53,13 +53,39 @@ function loadBots() {
           <p>${bot.desc}</p>
           <p><strong>Difficulté :</strong> ${bot.level}</p>
           <p><strong>Déploiement :</strong> ${bot.deployment}</p>
-          <button onclick="alert('Redirection vers le guide ${bot.name}')">Voir Tutoriel</button>
+          <button onclick="showVideo('${bot.video}')">Voir Tutoriel</button>
+          <button onclick="showGuide(\`${bot.guide.replace(/\n/g, '<br>')}\`)">Voir Instructions</button>
         </div>
       `).join('');
     })
     .catch(() => {
       document.getElementById("bot-list").innerHTML = "<p>Impossible de charger les bots.</p>";
     });
+}
+
+function showVideo(videoUrl) {
+  const modal = document.createElement("div");
+  modal.className = "modal";
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close" onclick="this.parentElement.parentElement.remove()">×</span>
+      <iframe width="100%" height="315" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+function showGuide(guide) {
+  const modal = document.createElement("div");
+  modal.className = "modal";
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close" onclick="this.parentElement.parentElement.remove()">×</span>
+      <h3>Instructions</h3>
+      <p>${guide}</p>
+    </div>
+  `;
+  document.body.appendChild(modal);
 }
 
 document.querySelectorAll(".nav-link").forEach(link => {
