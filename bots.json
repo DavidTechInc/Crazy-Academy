@@ -1,0 +1,23 @@
+[
+  {
+    "id": "xeonbot",
+    "name": "XeonBot MD",
+    "desc": "Bot multifonction, stable et open-source.",
+    "level": "Facile",
+    "deployment": "Replit, Termux"
+  },
+  {
+    "id": "samu-md",
+    "name": "Samu MD",
+    "desc": "Bot rapide avec fonctionnalités avancées.",
+    "level": "Intermédiaire",
+    "deployment": "Replit, Vercel"
+  },
+  {
+    "id": "crazy-ai",
+    "name": "Crazy AI",
+    "desc": "Bot IA avec génération d’image et texte.",
+    "level": "Avancé",
+    "deployment": "Termux, Heroku"
+  }
+]
