@@ -1,0 +1,141 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0d0d1a;
+  color: #ffffff;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Animated Background */
+.background-animation {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(circle at center, #1b1b3a, #0d0d1a);
+  animation: pulse 10s infinite alternate;
+}
+@keyframes pulse {
+  0% { background: radial-gradient(circle at 40% 40%, #1b1b3a, #0d0d1a); }
+  100% { background: radial-gradient(circle at 60% 60%, #1a1a2e, #0d0d1a); }
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 40px 20px 10px;
+}
+.glow {
+  font-size: 3rem;
+  color: #9a6fff;
+  text-shadow: 0 0 10px #9a6fff, 0 0 20px #9a6fff;
+}
+.slogan {
+  font-style: italic;
+  color: #ccc;
+  margin-top: 5px;
+}
+
+/* Navigation */
+.nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.nav-link {
+  color: #58faff;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #00ffd0;
+  transition: width 0.3s;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+.nav-link:hover {
+  color: #00ffd0;
+}
+
+/* Main content */
+.main-content {
+  padding: 30px 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Bot card styles */
+.bot-card {
+  background: #181830;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 15px rgba(90, 0, 160, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.bot-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(90, 0, 160, 0.6);
+}
+.bot-card h3 {
+  color: #9a6fff;
+  margin-bottom: 10px;
+}
+.bot-card p {
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+.bot-card button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  background: #00ffd0;
+  color: #000;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.bot-card button:hover {
+  background: #04eac5;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .glow {
+    font-size: 2rem;
+  }
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
