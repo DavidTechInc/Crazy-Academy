@@ -1,20 +1,18 @@
 [
   {
-    "id": "joker-max-xmd",
     "name": "Joker Max XMD",
-    "desc": "A versatile WhatsApp bot supporting multiple device connections, developed by Iconic Tech.",
+    "desc": "A powerful multipurpose WhatsApp bot based on Baileys. Includes moderation, AI, NSFW, and more.",
     "level": "Intermediate",
-    "deployment": "Termux, Replit",
-    "video": "https://www.youtube.com/embed/VIDEO_ID_JOKER",
-    "guide": "1. Clone the repository: git clone https://github.com/iconic05/Joker-Max-XMD.git\n2. Navigate to the project directory: cd Joker-Max-XMD\n3. Install dependencies: npm install\n4. Start the bot: npm start"
+    "deployment": "Termux / Ubuntu",
+    "repo": "https://github.com/iconic05/Joker-Max-XMD",
+    "tutorial": "https://youtube.com/@iconictechofficial"
   },
   {
-    "id": "queen-ruva-ai-beta",
-    "name": "Queen Ruva AI Beta",
-    "desc": "An AI-powered WhatsApp bot developed by Iconic Tech, focusing on innovation and smart solutions.",
-    "level": "Beginner",
-    "deployment": "Termux, Replit",
-    "video": "https://www.youtube.com/embed/VIDEO_ID_QUEEN",
-    "guide": "1. Clone the repository: git clone https://github.com/iconic05/Queen-Ruva-ai-Beta.git\n2. Navigate to the project directory: cd Queen-Ruva-ai-Beta\n3. Install dependencies: npm install\n4. Start the bot: npm start"
+    "name": "Queen Ruva AI",
+    "desc": "An advanced AI-based WhatsApp bot with GPT-4 features and auto-reply systems.",
+    "level": "Advanced",
+    "deployment": "Termux / Ubuntu",
+    "repo": "https://github.com/iconic05/Queen-Ruva-ai-Beta",
+    "tutorial": "https://youtube.com/@iconictechofficial"
   }
 ]
