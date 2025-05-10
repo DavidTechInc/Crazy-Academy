@@ -2,47 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bot Tutorial - Crazy Academy</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bot Tutorial</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .bot-card {
+      background: #111;
+      color: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      margin: 20px auto;
+      max-width: 600px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .bot-card a {
+      color: #4ea3ff;
+      text-decoration: none;
+    }
+    .bot-card a:hover {
+      text-decoration: underline;
+    }
+    .bot-card h2 {
+      margin-top: 0;
+    }
+    .back-link {
+      color: #4ea3ff;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+  </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">← Back to Home</a>
-  </nav>
-
-  <main class="fade-in">
-    <section id="bot-info">
-      <h2>Loading tutorial...</h2>
-    </section>
-  </main>
+  <a class="back-link" href="index.html">&larr; Back to Home</a>
+  <div id="tutorial-page" class="bot-card">Loading...</div>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const botName = urlParams.get("bot");
+    const params = new URLSearchParams(window.location.search);
+    const botName = params.get("bot");
 
-    fetch("bots.json")
-      .then(res => res.json())
+    fetch('bots.json')
+      .then(response => response.json())
       .then(bots => {
+        const container = document.getElementById("tutorial-page");
         const bot = bots.find(b => b.name === botName);
-        const container = document.getElementById("bot-info");
 
-        if (!bot) {
+        if (bot) {
+          container.innerHTML = `
+            <h2>${bot.name}</h2>
+            <p>${bot.description}</p>
+            <p><strong>Difficulty:</strong> ${bot.difficulty}</p>
+            <p><strong>Deployment:</strong> ${bot.deployment}</p>
+            <p><strong>Repository:</strong> <a href="${bot.repo}" target="_blank">${bot.repo}</a></p>
+            <p><strong>Tutorial:</strong> <a href="${bot.tutorial}" target="_blank">Watch Video</a></p>
+          `;
+        } else {
           container.innerHTML = "<p>Bot not found.</p>";
-          return;
         }
-
-        container.innerHTML = `
-          <h2>${bot.name}</h2>
-          <p>${bot.desc}</p>
-          <p><strong>Difficulty:</strong> ${bot.level}</p>
-          <p><strong>Deployment:</strong> ${bot.deployment}</p>
-          <p><strong>Repository:</strong> <a href="${bot.repo}" target="_blank">${bot.repo}</a></p>
-          <p><strong>Tutorial:</strong> <a href="${bot.tutorial}" target="_blank">Watch Video</a></p>
-        `;
       })
-      .catch(() => {
-        document.getElementById("bot-info").innerHTML = "<p>Unable to load bot data.</p>";
+      .catch(err => {
+        document.getElementById("tutorial-page").innerHTML = "<p>Failed to load bots.json.</p>";
+        console.error(err);
       });
   </script>
 </body>
