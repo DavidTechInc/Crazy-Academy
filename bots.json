@@ -3,16 +3,16 @@
     "name": "Joker Max XMD",
     "desc": "A powerful multipurpose WhatsApp bot based on Baileys. Includes moderation, AI, NSFW, and more.",
     "level": "Intermediate",
-    "deployment": "Termux / Ubuntu",
+    "deployment": "Termux / panel",
     "repo": "https://github.com/iconic05/Joker-Max-XMD",
-    "tutorial": "https://youtube.com/@iconictechofficial"
+    "tutorial": "https://youtube.com/@iconictechofficial?si=_CmJtBnOqDVRuEzq"
   },
   {
     "name": "Queen Ruva AI",
     "desc": "An advanced AI-based WhatsApp bot with GPT-4 features and auto-reply systems.",
     "level": "Advanced",
-    "deployment": "Termux / Ubuntu",
+    "deployment": "Termux / panel",
     "repo": "https://github.com/iconic05/Queen-Ruva-ai-Beta",
-    "tutorial": "https://youtube.com/@iconictechofficial"
+    "tutorial": "https://youtube.com/@iconictechofficial?si=_CmJtBnOqDVRuEzq"
   }
 ]
