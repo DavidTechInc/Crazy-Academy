@@ -1,23 +1,20 @@
 [
   {
-    "id": "xeonbot",
-    "name": "XeonBot MD",
-    "desc": "Bot multifonction, stable et open-source.",
-    "level": "Facile",
-    "deployment": "Replit, Termux"
+    "id": "joker-max-xmd",
+    "name": "Joker Max XMD",
+    "desc": "A versatile WhatsApp bot supporting multiple device connections, developed by Iconic Tech.",
+    "level": "Intermediate",
+    "deployment": "Termux, Replit",
+    "video": "https://www.youtube.com/embed/VIDEO_ID_JOKER",
+    "guide": "1. Clone the repository: git clone https://github.com/iconic05/Joker-Max-XMD.git\n2. Navigate to the project directory: cd Joker-Max-XMD\n3. Install dependencies: npm install\n4. Start the bot: npm start"
   },
   {
-    "id": "samu-md",
-    "name": "Samu MD",
-    "desc": "Bot rapide avec fonctionnalités avancées.",
-    "level": "Intermédiaire",
-    "deployment": "Replit, Vercel"
-  },
-  {
-    "id": "crazy-ai",
-    "name": "Crazy AI",
-    "desc": "Bot IA avec génération d’image et texte.",
-    "level": "Avancé",
-    "deployment": "Termux, Heroku"
+    "id": "queen-ruva-ai-beta",
+    "name": "Queen Ruva AI Beta",
+    "desc": "An AI-powered WhatsApp bot developed by Iconic Tech, focusing on innovation and smart solutions.",
+    "level": "Beginner",
+    "deployment": "Termux, Replit",
+    "video": "https://www.youtube.com/embed/VIDEO_ID_QUEEN",
+    "guide": "1. Clone the repository: git clone https://github.com/iconic05/Queen-Ruva-ai-Beta.git\n2. Navigate to the project directory: cd Queen-Ruva-ai-Beta\n3. Install dependencies: npm install\n4. Start the bot: npm start"
   }
 ]
