@@ -2,66 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bot Tutorial</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .bot-card {
-      background: #111;
-      color: white;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-      margin: 20px auto;
-      max-width: 600px;
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f0f0f;
+      color: #fff;
       font-family: 'Segoe UI', sans-serif;
     }
-    .bot-card a {
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #161616;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    p {
+      line-height: 1.6;
+    }
+    a {
       color: #4ea3ff;
       text-decoration: none;
     }
-    .bot-card a:hover {
+    a:hover {
       text-decoration: underline;
     }
-    .bot-card h2 {
-      margin-top: 0;
+    iframe {
+      width: 100%;
+      height: 360px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 20px;
     }
     .back-link {
+      margin: 20px;
+      display: inline-block;
       color: #4ea3ff;
-      text-decoration: none;
-      margin-left: 20px;
     }
   </style>
 </head>
 <body>
   <a class="back-link" href="index.html">&larr; Back to Home</a>
-  <div id="tutorial-page" class="bot-card">Loading...</div>
+
+  <div id="tutorial-container" class="container">Loading...</div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const botName = params.get("bot");
 
     fetch('bots.json')
-      .then(response => response.json())
+      .then(res => res.json())
       .then(bots => {
-        const container = document.getElementById("tutorial-page");
         const bot = bots.find(b => b.name === botName);
+        const container = document.getElementById("tutorial-container");
 
-        if (bot) {
-          container.innerHTML = `
-            <h2>${bot.name}</h2>
-            <p>${bot.description}</p>
-            <p><strong>Difficulty:</strong> ${bot.difficulty}</p>
-            <p><strong>Deployment:</strong> ${bot.deployment}</p>
-            <p><strong>Repository:</strong> <a href="${bot.repo}" target="_blank">${bot.repo}</a></p>
-            <p><strong>Tutorial:</strong> <a href="${bot.tutorial}" target="_blank">Watch Video</a></p>
-          `;
-        } else {
+        if (!bot) {
           container.innerHTML = "<p>Bot not found.</p>";
+          return;
         }
+
+        // Convert YouTube link to embed
+        const embedUrl = bot.tutorial.replace("watch?v=", "embed/");
+
+        container.innerHTML = `
+          <h1>${bot.name}</h1>
+          <p>${bot.description}</p>
+          <p><strong>Difficulty:</strong> ${bot.difficulty}</p>
+          <p><strong>Deployment:</strong> ${bot.deployment}</p>
+          <p><strong>Repository:</strong> <a href="${bot.repo}" target="_blank">${bot.repo}</a></p>
+          <h3>Tutorial Video:</h3>
+          <iframe src="${embedUrl}" allowfullscreen></iframe>
+        `;
       })
       .catch(err => {
-        document.getElementById("tutorial-page").innerHTML = "<p>Failed to load bots.json.</p>";
+        document.getElementById("tutorial-container").innerHTML = "<p>Error loading bot data.</p>";
         console.error(err);
       });
   </script>
